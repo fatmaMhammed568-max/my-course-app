@@ -1,0 +1,398 @@
+/* ====== الألوان الأساسية ====== */
+:root {
+  --primary: #007bff; /* الأزرق */
+  --secondary: #000; /* الأسود */
+  --accent: #c3820a; /* الأصفر */
+  --light: #f9f9f9;
+  
+  --danger: #dc3545; /* الأحمر للأخطاء */
+}
+
+/* ====== ستايل عام ====== */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--light);
+  color: var(--secondary);
+  line-height: 1.8;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+  font-size: 25px;
+  color: var(--secondary);
+}
+
+a {
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: var(--accent);
+  transform: scale(1.05);
+}
+
+/* ====== Navbar ====== */
+.navbar {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background-color: #0b5ed7;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size:30px !important;
+  letter-spacing: 1px;
+  color: #fff !important;
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+
+}
+.navbar-brand img {
+  width: 150px;   /* عرض اللوجو */
+  height: auto;  /* الارتفاع تلقائي */
+  margin-right: 10px; /* مسافة صغيرة يمين اللوجو */
+}
+.nav-link {
+  font-size: 20px !important;
+  font-weight: bold !important;
+  margin: 0 5px;
+  color: #FFD700 !important;
+
+}
+
+.nav-link:hover {
+  color: var(--accent) !important;
+}
+
+/* ====== Buttons ====== */
+.btn {
+  border-radius: 30px;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-warning {
+  background-color: var(--accent);
+  border: none;
+}
+
+.btn-warning:hover {
+  background-color: #c3820a;
+}
+
+/* ====== الكروت ====== */
+.card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-align: center;
+  background-color: #fff;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 220px; /* نفس مقاس كل الصور */
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 1rem;
+    color: #00000000 !important;
+}
+
+/* ====== البادجات ====== */
+.badge-free {
+  background: var(--accent);
+  color: var(--secondary);
+  font-size: 0.9rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.badge-paid {
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+/* ====== ستايل للفورم بالكامل ====== */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* يخلي الفورم كله في النص */
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  
+  
+}
+
+/* ====== العناوين (label) ====== */
+form label {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 6px;
+  text-align: center;
+  display: block;
+  color: var(--secondary);
+}
+
+/* ====== الفورمات ====== */
+form input,
+form textarea,
+form select {
+  width: 80%; /* عشان ياخد عرض منظم */
+  max-width: 400px; /* أقصى عرض */
+  border-radius: 10px !important;
+  padding: 12px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  text-align: center; /* يخلي الكتابة في النص */
+}
+
+/* ====== عند التركيز (Focus) ====== */
+form input:focus,
+form textarea:focus,
+form select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 8px rgba(0,123,255,0.4);
+  outline: none;
+  transform: scale(1.02);
+}
+
+/* ====== عند المرور بالماوس (Hover) ====== */
+form input:hover,
+form textarea:hover,
+form select:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(255,193,7,0.3);
+}
+/* ====== زرار السبميت ====== */
+form button[type="submit"] {
+  width: 200px;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: none;
+  background: var(--brand);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Hover Effect */
+form button[type="submit"]:hover {
+  background: #0b5ed7;
+  box-shadow: 0 6px 15px rgba(13, 110, 253, 0.4);
+  transform: scale(1.05);
+    display: block;
+}
+
+/* Active Click */
+form button[type="submit"]:active {
+  transform: scale(0.98);
+  background: #084298;
+}
+
+
+/* ====== Errors ====== */
+.text-red-500, .error {
+  color: var(--danger) !important;
+  font-size: 0.9rem;
+}
+
+/* ====== Footer ====== */
+.footer {
+  background: var(--secondary);
+  color: #fff;
+  padding: 20px 0;
+ display: flex;
+  flex-direction: column;
+  align-items: center; /* الصورة + أي عناصر جوه الفوتر هتبقى في النص */
+  justify-content: center;
+}
+
+.footer img {
+  width: 150px;
+  height: auto;
+  margin-top: 10px;
+ text-align: center;
+}
+
+.footer .small {
+  font-size: 30px;
+  margin-top: 10px;
+}
+
+/* ====== Hero Section ====== */
+.hero {
+  background: linear-gradient(to right, var(--primary), var(--accent));
+  padding: 60px 30px;
+  border-radius: 20px;
+  font-size: 25px;
+  color: #fff;
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+}
+
+/* ====== Animation بسيطة ====== */
+.card, .btn, .nav-link {
+  transition: all 0.3s ease-in-out;
+}
+
+
+
+
+.carousel-item img {
+    height: 500px;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5); /* خلفية شفافة سوداء */
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+  }
+    .carousel-caption:hover{
+        background-color: darkgray;
+    }
+
+  .carousel-caption h2,
+  .carousel-caption p {
+    color: #fff;
+    text-align: center;
+  }
+
+  .carousel-caption .btn {
+    margin-top: 15px;
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    background-color: #212529; /* نفس لون الزرار الأساسي */
+    border: none;
+    transition: 0.3s ease;
+  }
+
+  .carousel-caption .btn:hover {
+   background-color: brown;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 15px;
+  }
+
+  .myicon {
+    font-size: 2rem;
+    color: #000;
+  }
+  /* ====== العناوين العامة للأقسام ====== */
+section h3 {
+  font-size: 2rem;          /* حجم كبير */
+  font-weight: bold;        /* تخينة */
+  color: #ffdd00;           /* أصفر مميز */
+  margin-bottom: 1.5rem;
+  position: relative;
+  text-align: center;
+}
+
+section h3::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #fff;
+  margin: 0.5rem auto 0;    /* خط تحت العنوان */
+  border-radius: 2px;
+}
+
+/* ====== تنسيقات الأقسام ====== */
+section {
+  background: linear-gradient(135deg, #0056b3, #007bff); /* أزرق متدرج */
+  padding: 50px 20px;
+  border-radius: 15px;
+  margin-bottom: 40px;
+  color: white; /* كل النصوص جوة الأقسام تبقى بيضا */
+}
+
+/* ====== الكروت ====== */
+section .card {
+  background: rgba(255, 255, 255, 0.1); /* شفاف شوية */
+  border: none;
+  border-radius: 15px;
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section .card h5 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ffdd00; /* أصفر */
+}
+
+section .card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #f1f1f1;
+}
+
+section .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ====== زر كل الكورسات ====== */
+#home-courses + .btn,
+section .btn-outline-primary {
+  color: #fff;
+  border-color: #ffdd00;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+section .btn-outline-primary:hover {
+  background: #ffdd00;
+  color: #000;
+  border-color: #ffdd00;
+}

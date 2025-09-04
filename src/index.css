@@ -1,0 +1,75 @@
+:root {
+  --brand: #0d6efd; /* اللون الأساسي */
+  --light-bg: #f8fafc; 
+  --card-shadow: 0 10px 25px rgba(0,0,0,.06);
+}
+
+body { 
+  direction: rtl; 
+  font-family: Arial, Helvetica, sans-serif; 
+  background: var(--light-bg); 
+  margin: 0;
+  padding: 0;
+  color: #055eed; /* لون النص */
+}
+
+/* اللوجو */
+.navbar-brand { 
+
+  font-weight: 800; 
+  color: var(--brand);
+}
+
+/* البانر الرئيسي */
+.hero {
+
+  border-radius: 24px; 
+  padding: 48px; 
+  box-shadow: 0 12px 30px rgba(0,0,0,.05);
+  margin-bottom: 40px;
+}
+
+/* الكروت */
+.card { 
+  border: none; 
+  border-radius: 20px; 
+  font-size: 30px;
+  box-shadow: var(--card-shadow); 
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(0,0,0,.1);
+}
+
+/* الأزرار */
+.btn-round { 
+  border-radius: 14px; 
+  padding: 8px 18px;
+  font-weight: 600;
+}
+
+/* البادجات */
+.badge-free { 
+  background:#e7f5ff; 
+  color: #0d6efd; 
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+.badge-paid { 
+  background:#fff3cd; 
+  color:#7a5b00; 
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+/* الفوتر */
+.footer { 
+  background:#0b1220; 
+  color:#cbd5e1; 
+  padding: 20px 0;
+  text-align: center;
+  font-size: 14px;
+}

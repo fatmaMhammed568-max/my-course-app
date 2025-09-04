@@ -1,0 +1,85 @@
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import courses from "../utils/data";
+
+function Reservation() {
+  const { slug } = useParams();
+  const course = courses.find((c) => c.slug === slug);
+
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    payment: "",
+  });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let Reservations = JSON.parse(localStorage.getItem("Reservations")) || [];
+    Reservations.push({
+      ...form,
+      courseId: course.id,
+      courseTitle: course.title,
+    });
+    localStorage.setItem("Reservations", JSON.stringify(Reservations));
+    alert(" تم الحجز بنجاح!");
+    setForm({ name: "", email: "", phone: "", payment: "كاش" });
+  };
+
+  if (!course) return <h2>الكورس غير موجود</h2>;
+
+  return (
+    <div className="container d-flex justify-content-center mt-5">
+      <div className="card p-4 shadow w-50">
+        <h3 className="mb-3 text-center">حجز الكورس: {course.title}</h3>
+        <form onSubmit={handleSubmit}>
+          <input
+            className="form-control mb-2"
+            placeholder="الاسم"
+            name="name"
+            value={form.name}
+            onChange={handleChange}
+            required
+          />
+          <input
+            className="form-control mb-2"
+            placeholder="الإيميل"
+            type="email"
+            name="email"
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            className="form-control mb-2"
+            placeholder="رقم الهاتف"
+            name="phone"
+            value={form.phone}
+            onChange={handleChange}
+            required
+          />
+          <select
+            className="form-control mb-3"
+            name="payment"
+            value={form.payment}
+            onChange={handleChange}
+          >
+            <option value="" disabled>
+              اختر طريقة الدفع
+            </option>
+            <option value="كاش">كاش</option>
+            <option value="فيزا">فيزا</option>
+            <option value="انستا باي">انستا باي</option>
+          </select>
+          <button className="btn btn-primary w-100">تأكيد الحجز</button>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+export default Reservation;
