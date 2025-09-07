@@ -100,7 +100,7 @@ function CourseDetails() {
                             <Card.Title>{level.name}</Card.Title>
                             <ul>
                               {level.details.map((d, i) => (
-                                <li key={i}>• {d}</li>
+                                <li key={i}> {d}</li>
                               ))}
                             </ul>
                           </Card.Body>

@@ -11,23 +11,33 @@ function Reservation() {
     email: "",
     phone: "",
     payment: "",
+    receipt: null, 
   });
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value, files } = e.target;
+    if (name === "receipt") {
+      setForm({ ...form, receipt: files[0] });
+    } else {
+      setForm({ ...form, [name]: value });
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     let Reservations = JSON.parse(localStorage.getItem("Reservations")) || [];
+
     Reservations.push({
       ...form,
       courseId: course.id,
       courseTitle: course.title,
     });
+
     localStorage.setItem("Reservations", JSON.stringify(Reservations));
-    alert(" تم الحجز بنجاح!");
-    setForm({ name: "", email: "", phone: "", payment: "كاش" });
+
+    alert("تم الحجز بنجاح!");
+    setForm({ name: "", email: "", phone: "", payment: "", receipt: null });
   };
 
   if (!course) return <h2>الكورس غير موجود</h2>;
@@ -67,14 +77,27 @@ function Reservation() {
             name="payment"
             value={form.payment}
             onChange={handleChange}
+            required
           >
             <option value="" disabled>
               اختر طريقة الدفع
             </option>
             <option value="كاش">كاش</option>
-            <option value="فيزا">فيزا</option>
             <option value="انستا باي">انستا باي</option>
           </select>
+
+         
+          {form.payment === "انستا باي" && (
+            <input
+              type="file"
+              name="receipt"
+              accept="image/*"
+              className="form-control mb-3"
+              onChange={handleChange}
+              required
+            />
+          )}
+
           <button className="btn btn-primary w-100">تأكيد الحجز</button>
         </form>
       </div>

@@ -51,7 +51,7 @@ a:hover {
 
 }
 .navbar-brand img {
-  width: 150px;   /* عرض اللوجو */
+  width: 100px;   /* عرض اللوجو */
   height: auto;  /* الارتفاع تلقائي */
   margin-right: 10px; /* مسافة صغيرة يمين اللوجو */
 }
@@ -59,12 +59,12 @@ a:hover {
   font-size: 20px !important;
   font-weight: bold !important;
   margin: 0 5px;
-  color: #FFD700 !important;
+  color: #ffdd00 !important;
 
 }
 
 .nav-link:hover {
-  color: var(--accent) !important;
+  color: #c3820a !important;
 }
 
 /* ====== Buttons ====== */
@@ -260,21 +260,26 @@ form button[type="submit"]:active {
 
 /* ====== Hero Section ====== */
 .hero {
-  background: linear-gradient(to right, var(--primary), var(--accent));
+  background-attachment: fixed;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+              url("/assets/4.jpg") no-repeat center center/cover;
   padding: 60px 30px;
   border-radius: 20px;
-  font-size: 25px;
   color: #fff;
 }
 
 .hero h1 {
-  font-size: 2.2rem;
-  margin-bottom: 15px;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
 }
 
 .hero p {
-  font-size: 1.1rem;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #f1f1f1;
 }
+
 
 /* ====== Animation بسيطة ====== */
 .card, .btn, .nav-link {
@@ -291,7 +296,7 @@ form button[type="submit"]:active {
   }
 
   .carousel-caption {
-    background-color: rgba(0, 0, 0, 0.5); /* خلفية شفافة سوداء */
+    background-color: rgba(0, 0, 0, 0.5); 
     padding: 30px;
     border-radius: 15px;
     text-align: center;
@@ -302,7 +307,7 @@ form button[type="submit"]:active {
 
   .carousel-caption h2,
   .carousel-caption p {
-    color: #fff;
+    color: blue !important;
     text-align: center;
   }
 
@@ -330,7 +335,7 @@ form button[type="submit"]:active {
 section h3 {
   font-size: 2rem;          /* حجم كبير */
   font-weight: bold;        /* تخينة */
-  color: #ffdd00;           /* أصفر مميز */
+  color: blue;          
   margin-bottom: 1.5rem;
   position: relative;
   text-align: center;
@@ -341,14 +346,14 @@ section h3::after {
   display: block;
   width: 80px;
   height: 4px;
-  background-color: #fff;
+  background-color: blue !important;
   margin: 0.5rem auto 0;    /* خط تحت العنوان */
   border-radius: 2px;
 }
 
 /* ====== تنسيقات الأقسام ====== */
 section {
-  background: linear-gradient(135deg, #0056b3, #007bff); /* أزرق متدرج */
+ 
   padding: 50px 20px;
   border-radius: 15px;
   margin-bottom: 40px;
@@ -360,7 +365,7 @@ section .card {
   background: rgba(255, 255, 255, 0.1); /* شفاف شوية */
   border: none;
   border-radius: 15px;
-  color: #fff;
+  color: blue;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -368,13 +373,15 @@ section .card h5 {
   font-size: 1.3rem;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #ffdd00; /* أصفر */
+  color: blue; /* أصفر */
 }
 
 section .card p {
-  font-size: 1rem;
+  font-size: 20px;
+  font-weight: bold;
   line-height: 1.6;
-  color: #f1f1f1;
+  color: #000000 !important;
+  
 }
 
 section .card:hover {
@@ -386,7 +393,7 @@ section .card:hover {
 #home-courses + .btn,
 section .btn-outline-primary {
   color: #fff;
-  border-color: #ffdd00;
+  background-color: blue;
   font-weight: bold;
   transition: all 0.3s ease;
 }
@@ -394,5 +401,5 @@ section .btn-outline-primary {
 section .btn-outline-primary:hover {
   background: #ffdd00;
   color: #000;
-  border-color: #ffdd00;
+  
 }

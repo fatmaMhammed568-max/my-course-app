@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Register() {
+function Register({ setUser }) {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -27,17 +27,18 @@ function Register() {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const validationErrors = validate();
-    setErrors(validationErrors);
+const handleSubmit = (e) => {
+  e.preventDefault();
+  const validationErrors = validate();
+  setErrors(validationErrors);
 
-    if (Object.keys(validationErrors).length === 0) {
-      localStorage.setItem("user", JSON.stringify(form));
-      alert("تم إنشاء الحساب بنجاح ");
-      navigate("/login");
-    }
-  };
+  if (Object.keys(validationErrors).length === 0) {
+    // حفظ المستخدم في localStorage
+    localStorage.setItem("user", JSON.stringify(form));
+    alert("تم إنشاء الحساب بنجاح. الآن يمكنك تسجيل الدخول");
+    navigate("/login"); // توجه لصفحة تسجيل الدخول
+  }
+};
 
   return (
     <div className="container d-flex justify-content-center mt-5">
@@ -75,9 +76,7 @@ function Register() {
             className="form-control mb-2"
             required
           />
-          {errors.password && (
-            <p className="text-danger">{errors.password}</p>
-          )}
+          {errors.password && <p className="text-danger">{errors.password}</p>}
 
           <button type="submit" className="btn btn-primary w-100 mt-3">
             تسجيل

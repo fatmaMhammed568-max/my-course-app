@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Login({ setUser }) {
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
@@ -19,8 +19,10 @@ function Login() {
       savedUser.email === form.email &&
       savedUser.password === form.password
     ) {
-      alert("تم تسجيل الدخول بنجاح ");
-      navigate("/");
+      // تحديث حالة المستخدم فورًا
+      setUser(savedUser);
+      alert("تم تسجيل الدخول بنجاح");
+      navigate("/"); // العودة للصفحة الرئيسية
     } else {
       setError("الإيميل أو كلمة المرور غير صحيحة");
     }

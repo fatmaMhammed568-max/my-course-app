@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import './App.css';
 import Navbar from "./components/Navbar.jsx";
@@ -12,16 +12,17 @@ import Contact from "./pages/Contact.jsx";
 import CourseDetails from "./pages/CourseDetails.jsx";
 
 function App() {
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+
   return (
     <>
-      <Navbar />
+      <Navbar user={user} setUser={setUser} />
       <div className="container my-4">
         <Routes>
-          
           <Route path="/" element={<Home />} />
           <Route path="/courses" element={<Courses />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login setUser={setUser} />} />
+          <Route path="/register" element={<Register setUser={setUser} />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/course/:slug" element={<CourseDetails />} />
           <Route path="/reservation/:slug" element={<Reservation />} />
