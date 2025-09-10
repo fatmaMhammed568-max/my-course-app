@@ -105,7 +105,7 @@ const courses = [
     title: "English Course",
     description: "تحسين مهارات اللغة الإنجليزية",
     image: "/assets/8.jpg",
-    price: 300,
+    price: 12000,
     duration: "6 أسابيع",
     lectures: "3 أيام في الأسبوع",
     certificate: "شهادة معتمدة بعد إتمام المستوى",

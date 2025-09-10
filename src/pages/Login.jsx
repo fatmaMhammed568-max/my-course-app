@@ -13,14 +13,15 @@ function Login({ setUser }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const savedUser = JSON.parse(localStorage.getItem("user"));
-    if (
-      savedUser &&
-      savedUser.email === form.email &&
-      savedUser.password === form.password
-    ) {
-      // تحديث حالة المستخدم فورًا
-      setUser(savedUser);
+    const savedUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+    // البحث عن المستخدم المدخل
+    const matchedUser = savedUsers.find(
+      (u) => u.email === form.email && u.password === form.password
+    );
+
+    if (matchedUser) {
+      setUser(matchedUser); // تخزين المستخدم الحالي في الحالة
       alert("تم تسجيل الدخول بنجاح");
       navigate("/"); // العودة للصفحة الرئيسية
     } else {

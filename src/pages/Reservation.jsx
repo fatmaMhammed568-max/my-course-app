@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import courses from "../utils/data";
 
 function Reservation() {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const course = courses.find((c) => c.slug === slug);
 
   const [form, setForm] = useState({
@@ -11,17 +12,23 @@ function Reservation() {
     email: "",
     phone: "",
     payment: "",
-    receipt: null, 
+    receipt: null,
   });
-
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === "receipt") {
-      setForm({ ...form, receipt: files[0] });
-    } else {
-      setForm({ ...form, [name]: value });
-    }
-  };
+  const { name, value, files } = e.target;
+
+  if (name === "receipt" && files && files[0]) {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setForm({ ...form, receipt: reader.result }); // Base64 string
+    };
+    reader.readAsDataURL(files[0]); // يحول الصورة Data URL
+  } else {
+    setForm({ ...form, [name]: value });
+  }
+};
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,6 +45,8 @@ function Reservation() {
 
     alert("تم الحجز بنجاح!");
     setForm({ name: "", email: "", phone: "", payment: "", receipt: null });
+
+    
   };
 
   if (!course) return <h2>الكورس غير موجود</h2>;
@@ -86,7 +95,6 @@ function Reservation() {
             <option value="انستا باي">انستا باي</option>
           </select>
 
-         
           {form.payment === "انستا باي" && (
             <input
               type="file"

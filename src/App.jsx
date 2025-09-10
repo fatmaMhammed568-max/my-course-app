@@ -10,7 +10,7 @@ import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import Contact from "./pages/Contact.jsx";
 import CourseDetails from "./pages/CourseDetails.jsx";
-
+import Dashboard from "./pages/Dashboard.jsx";
 function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
@@ -26,6 +26,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/course/:slug" element={<CourseDetails />} />
           <Route path="/reservation/:slug" element={<Reservation />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
       <Footer />

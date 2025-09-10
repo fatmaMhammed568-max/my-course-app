@@ -27,18 +27,32 @@ function Register({ setUser }) {
     return newErrors;
   };
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-  const validationErrors = validate();
-  setErrors(validationErrors);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    setErrors(validationErrors);
 
-  if (Object.keys(validationErrors).length === 0) {
-    // حفظ المستخدم في localStorage
-    localStorage.setItem("user", JSON.stringify(form));
-    alert("تم إنشاء الحساب بنجاح. الآن يمكنك تسجيل الدخول");
-    navigate("/login"); // توجه لصفحة تسجيل الدخول
-  }
-};
+    if (Object.keys(validationErrors).length === 0) {
+      // استرجاع المستخدمين السابقين
+      const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+      // التحقق لو الإيميل مستخدم قبل كده
+      const emailExists = existingUsers.some((u) => u.email === form.email);
+      if (emailExists) {
+        alert("هذا الإيميل مستخدم من قبل. يرجى استخدام إيميل آخر.");
+        return;
+      }
+
+      // إضافة المستخدم الجديد
+      existingUsers.push(form);
+
+      // حفظ القائمة الجديدة
+      localStorage.setItem("users", JSON.stringify(existingUsers));
+
+      alert("تم إنشاء الحساب بنجاح. الآن يمكنك تسجيل الدخول");
+      navigate("/login");
+    }
+  };
 
   return (
     <div className="container d-flex justify-content-center mt-5">
